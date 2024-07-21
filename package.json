@@ -1,0 +1,77 @@
+{
+  "name": "i18n-collector",
+  "displayName": "I18n Collector",
+  "description": "Extensão para coletar textos e gerar arquivos i18n.",
+  "version": "0.0.1",
+  "publisher": "exter-experts",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "activationEvents": [
+    "onCommand:i18n-collector.collectTexts"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "i18n-collector.setLanguage",
+        "title": "Set Language for i18n"
+      },
+      {
+        "command": "i18n-collector.setProgrammingLanguage",
+        "title": "Set Programming Language for i18n"
+      },
+      {
+        "command": "i18n-collector.collectTexts",
+        "title": "Collect Texts for i18n"
+      },
+      {
+        "command": "i18n-collector.openI18nFile",
+        "title": "Open i18n File"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "I18n Collector",
+      "properties": {
+        "i18nCollector.fileName": {
+          "type": "string",
+          "default": "i18n",
+          "description": "Nome do arquivo de saída i18n (sem extensão)"
+        },
+        "i18nCollector.slugFormat": {
+          "type": "string",
+          "default": "lowercase_underscore",
+          "description": "Formato das chaves de slug: 'lowercase_underscore', 'camelCase', 'PascalCase'"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "i18n-collector.collectTexts",
+        "key": "alt+n",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.91.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0"
+  }
+}
